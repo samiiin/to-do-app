@@ -1,7 +1,7 @@
-import { Body, Controller, Get, ParseIntPipe, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, ParseIntPipe, Post, Put ,Query} from '@nestjs/common';
 import { UserServices } from './user.service';
 import CreateUserDto from './dto/create-user.dto';
-import {ApiResponse,ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
+import {ApiResponse,ApiBearerAuth, ApiQuery,ApiBody } from '@nestjs/swagger';
 
 @Controller('users')
 export class UserController {
@@ -20,8 +20,7 @@ export class UserController {
 
   @ApiResponse({ status: 200})
   @ApiQuery(
-  {
-        name: 'userID',
+  {     name :'userID',
         required: true,
         type: Number,
    })
@@ -29,7 +28,7 @@ export class UserController {
 //'getBooks()' return all the books which are associated with the user 
 // provided through 'userID' by the request  
   @Get('books')
-  getBooks( @Body('userID', ParseIntPipe) userID: number ) {
+  getBooks( @Query('userID') userID: number ) {
     return this.usersServices.getBooksOfUser(userID);
   }
 }
