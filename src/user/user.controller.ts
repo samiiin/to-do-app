@@ -33,7 +33,7 @@ export class UserController {
   @Get('books')
   @ApiBearerAuth() 
   @UseGuards(JwtAuthGuard)
-  getBooks(@Query('userID') userID: number ) {
+  getBooks(@Query('userID') userID: number) {
     return this.usersServices.getBooksOfUser(userID);
   }
 }
