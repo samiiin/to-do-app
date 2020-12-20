@@ -30,7 +30,6 @@ export class BooksService {
 
   async deleteBook(bookID: number): Promise<String>{
     try{
-      console.log(bookID)
       const book: BookEntity = await BookEntity.findOne({where: {id: bookID}});
       await BookEntity.remove(book)
       return `Book ${bookID} deleted!`;

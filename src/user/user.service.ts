@@ -10,7 +10,11 @@ export class UserServices {
   async insert(userDetails: CreateUserDto): Promise<UserEntity> {
     const userEntity: UserEntity = UserEntity.create();
     const name: string = userDetails.name;
+    const password: string = userDetails.password;
+
     userEntity.name = name;
+    userEntity.password = password;
+
     await UserEntity.save(userEntity);
     return userEntity;
   }
@@ -21,5 +25,10 @@ export class UserServices {
     console.log(typeof(userID));
     const user: UserEntity = await UserEntity.findOne({where: {id: userID}, relations: ['books']});
     return user.books;
+  }
+
+  async findUser(username: string): Promise<UserEntity | undefined> {
+    const user: UserEntity = await UserEntity.findOne({where: {name: username}});
+    return user;
   }
 }
