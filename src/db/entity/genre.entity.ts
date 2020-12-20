@@ -9,9 +9,4 @@ export default class GenreEntity extends BaseEntity {
   @Column()
   type: string;
 
-  // n:n relation with genre
-  @ManyToMany(type => GenreEntity)
-  @JoinTable()
-  genres: GenreEntity[];
-
 }
