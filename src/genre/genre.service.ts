@@ -13,6 +13,7 @@ export default class GenreServices {
     await GenreEntity.save(genreEntity);
     return genreEntity;
   }
+  
   async getAllGenre(): Promise<GenreEntity[]> {
         return await GenreEntity.find();
   }

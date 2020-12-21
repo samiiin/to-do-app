@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { GenreModule } from './genre/genre.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
+import { TodoModule } from './todo/todo.module';
 import UserEntity from './db/entity/user.entity';
 import BookEntity from './db/entity/book.entity';
 import GenreEntity from './db/entity/genre.entity';
@@ -15,7 +16,8 @@ import GenreEntity from './db/entity/genre.entity';
   imports: [HelloModule, BooksModule, UserModule, GenreModule,
   TypeOrmModule.forFeature([UserEntity, BookEntity , GenreEntity],),
   TypeOrmModule.forRoot(),
-  AuthModule,],
+  AuthModule,
+  TodoModule,],
   controllers: [AppController],
   providers: [AppService],
 })
